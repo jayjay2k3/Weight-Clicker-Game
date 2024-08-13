@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Weight-Clicker-Game.sln"
+    "dotnet.defaultSolution": "Weight-Clicker-Game.sln",
+    "FSharp.suggestGitignore": false
 }

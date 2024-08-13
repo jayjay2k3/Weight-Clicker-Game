@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class SweatManager : GameManager
 {
-    public int sweatGainPerClick;
-    public int currentSweat;
+   
+    
 
     public TextMeshProUGUI sweatPanelText;
 
     // Update is called once per frame
     private void Start() {
-        sweatPanelText.text=currentSweat.ToString();
+        sweatPanelText.text=characterStats.currentSweat.ToString();
     }
     
 
     public void GainSweat()
     {
-        currentSweat+=sweatGainPerClick;
-        sweatPanelText.text=currentSweat.ToString();
+        characterStats.currentSweat+=characterStats.sweatGainPerClick*(1+characterStats.sweatGainRate/100);
+        sweatPanelText.text=((int)characterStats.currentSweat).ToString();
     }
 }
