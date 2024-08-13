@@ -22,43 +22,44 @@ public class GameManager : MonoBehaviour
     public Image[] barbellImage;
     public SpriteRenderer characterCurrentBarbellImage;
     private void Start() {
-        LoadData();
+        if(PlayerPrefs.GetInt("IsSave")==1)
+        {
+            Debug.Log(1);
+            LoadData();
+        }
     }
 
     void LoadData()
     {
         
+            characterStats.currentBarbellWeight = PlayerPrefs.GetInt("currentBarbellWeight");
+            characterStats.level = PlayerPrefs.GetInt("level");
+            characterStats.expPerClick = PlayerPrefs.GetInt("expPerClick");
+            characterStats.expProgress = PlayerPrefs.GetInt("expProgress");
+            characterStats.expForNextLevel = PlayerPrefs.GetInt("expForNextLevel");
+            characterStats.power = PlayerPrefs.GetInt("power");
+            characterStats.stamina = PlayerPrefs.GetInt("stamina");
+            characterStats.staminaRegen = PlayerPrefs.GetInt("staminaRegen");
 
-        characterStats.currentBarbellWeight = PlayerPrefs.GetInt("currentBarbellWeight");
-        characterStats.level = PlayerPrefs.GetInt("level");
-        characterStats.expPerClick = PlayerPrefs.GetInt("expPerClick");
-        characterStats.expProgress = PlayerPrefs.GetInt("expProgress");
-        characterStats.expForNextLevel = PlayerPrefs.GetInt("expForNextLevel");
-        characterStats.power = PlayerPrefs.GetInt("power");
-        characterStats.stamina = PlayerPrefs.GetInt("stamina");
-        characterStats.staminaRegen = PlayerPrefs.GetInt("staminaRegen");
+            characterStats.currentSweat=(int)PlayerPrefs.GetFloat("currentSweat");
+            characterStats.sweatGainRate = PlayerPrefs.GetFloat("sweatGainRate");
+            characterStats.sweatGainPerClick = PlayerPrefs.GetFloat("sweatGainPerClick");
 
-        characterStats.currentSweat=PlayerPrefs.GetFloat("currentSweat");
-        characterStats.sweatGainRate = PlayerPrefs.GetFloat("sweatGainRate");
-        characterStats.sweatGainPerClick = PlayerPrefs.GetFloat("sweatGainPerClick");
+            characterStats.powerLevel= PlayerPrefs.GetInt("powerLevel");
+            characterStats.staminaLevel = PlayerPrefs.GetInt("staminaLevel");
+            characterStats.staminaRegenLevel = PlayerPrefs.GetInt("staminaRegenLevel");
+            characterStats.sweatGainLevel = PlayerPrefs.GetInt("sweatGainLevel");
 
-        characterStats.powerLevel= PlayerPrefs.GetInt("powerLevel");
-        characterStats.staminaLevel = PlayerPrefs.GetInt("staminaLevel");
-        characterStats.staminaRegenLevel = PlayerPrefs.GetInt("staminaRegenLevel");
-        characterStats.sweatGainLevel = PlayerPrefs.GetInt("sweatGainLevel");
+            for(int i=0;i<characterStats.barbellUnlocked.Length;i++)
+            {
+                int value;
+                value = PlayerPrefs.GetInt("barbellUnlocked"+"i");
+                characterStats.barbellUnlocked[i]= value == 1;
 
-        for(int i=0;i<characterStats.barbellUnlocked.Length;i++)
-        {
-            int value;
-            value = PlayerPrefs.GetInt("barbellUnlocked"+"i");
-            characterStats.barbellUnlocked[i]= value == 1;
-
-        }
-        
-        characterStats.selectedBarbellIndex = PlayerPrefs.GetInt("selectedBarbellIndex");
-        PlayerPrefs.Save();
-
-        characterCurrentBarbellImage.sprite=barbellImage[characterStats.selectedBarbellIndex].sprite;
+            }
+            
+            characterStats.selectedBarbellIndex = PlayerPrefs.GetInt("selectedBarbellIndex");
+            characterCurrentBarbellImage.sprite=barbellImage[characterStats.selectedBarbellIndex].sprite;
         
     }
 
@@ -71,33 +72,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit() {
-        PlayerPrefs.SetInt("currentBarbellWeight",characterStats.currentBarbellWeight);
-        PlayerPrefs.SetInt("level",characterStats.level);
-        PlayerPrefs.SetInt("expPerClick",characterStats.expPerClick);
-        PlayerPrefs.SetInt("expProgress",characterStats.expProgress);
-        PlayerPrefs.SetInt("expForNextLevel",characterStats.expForNextLevel);
-        PlayerPrefs.SetInt("power",characterStats.power);
-        PlayerPrefs.SetInt("stamina",characterStats.stamina);
-        PlayerPrefs.SetInt("staminaRegen",characterStats.staminaRegen);
+   private void OnApplicationPause(bool pauseStatus) {
+    
+   
+            if(pauseStatus)
+            {
+            PlayerPrefs.SetInt("IsSave", 1);
+            PlayerPrefs.SetInt("currentBarbellWeight", characterStats.currentBarbellWeight);
+            PlayerPrefs.SetInt("level", characterStats.level);
+            PlayerPrefs.SetInt("expPerClick", characterStats.expPerClick);
+            PlayerPrefs.SetInt("expProgress", characterStats.expProgress);
+            PlayerPrefs.SetInt("expForNextLevel", characterStats.expForNextLevel);
+            PlayerPrefs.SetInt("power", characterStats.power);
+            PlayerPrefs.SetInt("stamina", characterStats.stamina);
+            PlayerPrefs.SetInt("staminaRegen", characterStats.staminaRegen);
 
-        PlayerPrefs.SetFloat("currentSweat",characterStats.currentSweat);
-        PlayerPrefs.SetFloat("sweatGainRate",characterStats.sweatGainRate);
-        PlayerPrefs.SetFloat("sweatGainPerClick",characterStats.sweatGainPerClick);
+            PlayerPrefs.SetFloat("currentSweat", characterStats.currentSweat);
+            PlayerPrefs.SetFloat("sweatGainRate", characterStats.sweatGainRate);
+            PlayerPrefs.SetFloat("sweatGainPerClick", characterStats.sweatGainPerClick);
 
-        PlayerPrefs.SetInt("powerLevel",characterStats.powerLevel);
-        PlayerPrefs.SetInt("staminaLevel",characterStats.staminaLevel);
-        PlayerPrefs.SetInt("staminaRegenLevel",characterStats.staminaRegenLevel);
-        PlayerPrefs.SetInt("sweatGainLevel",characterStats.sweatGainLevel);
+            PlayerPrefs.SetInt("powerLevel", characterStats.powerLevel);
+            PlayerPrefs.SetInt("staminaLevel", characterStats.staminaLevel);
+            PlayerPrefs.SetInt("staminaRegenLevel", characterStats.staminaRegenLevel);
+            PlayerPrefs.SetInt("sweatGainLevel", characterStats.sweatGainLevel);
 
-        for(int i=0;i<characterStats.barbellUnlocked.Length;i++)
-        {
-            int value= characterStats.barbellUnlocked[i] ? 1 : 0;
-            PlayerPrefs.SetInt("barbellUnlocked"+"i",value);
-        }
-        
-        PlayerPrefs.SetInt("selectedBarbellIndex",characterStats.selectedBarbellIndex);
-        PlayerPrefs.Save();
+            for (int i = 0; i < characterStats.barbellUnlocked.Length; i++)
+            {
+                int value = characterStats.barbellUnlocked[i] ? 1 : 0;
+                PlayerPrefs.SetInt("barbellUnlocked" + "i", value);
+            }
+
+            PlayerPrefs.SetInt("selectedBarbellIndex", characterStats.selectedBarbellIndex);
+            PlayerPrefs.Save();
+        }        
 
     }
 

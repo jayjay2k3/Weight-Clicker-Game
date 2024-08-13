@@ -42,7 +42,6 @@ public class CharacterController : MonoBehaviour
         
         if(Input.touchCount>0 && gameManager.canPush && EventSystem.current.currentSelectedGameObject==null && gameManager.canClick)
         {    
-          
             if ((gameManager.characterStats.power*4/gameManager.characterStats.currentBarbellWeight)>=2)
             {
                 characterPowerState=PowerState.veryStrong;

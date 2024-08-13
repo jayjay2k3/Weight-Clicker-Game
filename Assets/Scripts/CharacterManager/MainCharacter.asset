@@ -16,16 +16,16 @@ MonoBehaviour:
   level: 1
   expPerClick: 10
   expProgress: 0
-  expForNextLevel: 100
+  expForNextLevel: 150
   power: 5
   stamina: 100
   staminaRegen: 10
-  currentSweat: 0
-  sweatGainRate: 5
+  currentSweat: 70
+  sweatGainRate: 0
   sweatGainPerClick: 10
   powerLevel: 1
   staminaLevel: 1
   staminaRegenLevel: 1
   sweatGainLevel: 1
-  barbellUnlocked: 01010000
+  barbellUnlocked: 01000000
   selectedBarbellIndex: 0
