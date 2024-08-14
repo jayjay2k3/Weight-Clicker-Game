@@ -25,6 +25,7 @@ public class CharacterStats : ScriptableObject
     public int sweatGainLevel;
 
     [Header("Equipment Unlocked")]
+    public bool[] barbellUnlockable;
     public bool[] barbellUnlocked;
 
     public int selectedBarbellIndex;

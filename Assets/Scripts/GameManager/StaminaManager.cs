@@ -11,10 +11,9 @@ public class StaminaManager : GameManager
     public int staminaCostPerClick;
     [SerializeField] Image ProgressBar;
     public float currentStamina;
-    public TextMeshProUGUI staminaText;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currentStamina=characterStats.stamina;
     }

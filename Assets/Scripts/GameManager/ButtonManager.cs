@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -138,9 +141,7 @@ public class ButtonManager : MonoBehaviour
          else
          {
              gameManager.barbellText[i].text="Unlock";
-             bool unlockable=int.Parse(gameManager.weightText[i].text.Replace("kg",""))/2<=gameManager.characterStats.power;
-
-             gameManager.barbellButton[i].interactable=unlockable;
+             gameManager.barbellButton[i].interactable=gameManager.characterStats.barbellUnlockable[i];
              
          }
 
@@ -165,16 +166,37 @@ public class ButtonManager : MonoBehaviour
                         //Change expPerClick
                         gameManager.characterStats.expPerClick=gameManager.characterStats.currentBarbellWeight/5;
                         //Change sprite
-                        gameManager.characterCurrentBarbellImage.sprite=gameManager.barbellImage[i].sprite;
+                        gameManager.characterCurrentBarbellImage.sprite=gameManager.barbellImage[i];
                         //Change sweatGainPerClick
                         gameManager.characterStats.sweatGainPerClick=gameManager.characterStats.currentBarbellWeight/2;
                      }
+                     else if (gameManager.barbellText[i].text=="Unlock")
+                     {
+                        gameManager.barbellText[i].text="Select";
+                        gameManager.characterStats.barbellUnlocked[i]=true;
+                        button.interactable=true;
+                        
+                     }
          }
-               
-         }
-      
+             UpdateBarbellData();        
+      }
+   }
 
-      UpdateBarbellData();
+   public void Retry()
+   {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
       
+   }
+
+   public void Return()
+   {
+      SceneManager.LoadScene(0);
+      
+   }
+
+   public void OpenChallengeScene()
+   {
+      SceneManager.LoadScene(1);
+
    }
 }

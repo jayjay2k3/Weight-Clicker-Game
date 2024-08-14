@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +24,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] StaminaManager staminaManager;
     [SerializeField] LevelManager levelManager;
     [SerializeField] SweatManager sweatManager;
+    [SerializeField] CompettionManager compettionManager;
+    public bool isCompettionScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,7 @@ public class CharacterController : MonoBehaviour
     void Push()
     {
         
-        if(Input.touchCount>0 && gameManager.canPush && EventSystem.current.currentSelectedGameObject==null && gameManager.canClick)
+        if(Input.touchCount>0 && gameManager.canPush && EventSystem.current.currentSelectedGameObject==null && gameManager.canClick )
         {    
             if ((gameManager.characterStats.power*4/gameManager.characterStats.currentBarbellWeight)>=2)
             {
@@ -60,14 +63,29 @@ public class CharacterController : MonoBehaviour
             {
                 animator.SetBool("IsTouch",true);
             }
+
+            
         }
+
+        
     }
 
     void GainProgress()
     {
         staminaManager.StaminaCost();
-        levelManager.GainExp();
-        sweatManager.GainSweat();
+
+        if (isCompettionScene)
+        {
+            compettionManager.pushCount++;
+        }
+        if (!isCompettionScene)
+        {
+            levelManager.GainExp();
+            sweatManager.GainSweat();
+        }
+
+
+        
     }
     void StopPush()
     {

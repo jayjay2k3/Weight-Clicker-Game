@@ -12,7 +12,7 @@ public class SweatManager : GameManager
     public TextMeshProUGUI sweatPanelText;
 
     // Update is called once per frame
-    private void Start() {
+    private void Awake() {
         sweatPanelText.text=characterStats.currentSweat.ToString();
     }
     

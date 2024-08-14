@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
   currentBarbellWeight: 50
-  level: 1
+  level: 2
   expPerClick: 10
-  expProgress: 0
-  expForNextLevel: 150
+  expProgress: 170
+  expForNextLevel: 250
   power: 5
   stamina: 100
   staminaRegen: 10
-  currentSweat: 70
+  currentSweat: 840
   sweatGainRate: 0
-  sweatGainPerClick: 10
+  sweatGainPerClick: 25
   powerLevel: 1
   staminaLevel: 1
   staminaRegenLevel: 1
   sweatGainLevel: 1
+  barbellUnlockable: 01000000
   barbellUnlocked: 01000000
   selectedBarbellIndex: 0
