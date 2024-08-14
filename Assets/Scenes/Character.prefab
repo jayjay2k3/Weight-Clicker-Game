@@ -125,7 +125,10 @@ MonoBehaviour:
   staminaManager: {fileID: 0}
   levelManager: {fileID: 0}
   sweatManager: {fileID: 0}
+  compettionManager: {fileID: 0}
   isCompettionScene: 0
+  expGainText: {fileID: 8572474037975332354, guid: 12c41d8539e00b447a4d6c8451c61420, type: 3}
+  sweatGainText: {fileID: 8938835905581398423, guid: e0950f516c44a2c4fa56b870f94083f7, type: 3}
 --- !u!1 &9090311829663443429
 GameObject:
   m_ObjectHideFlags: 0

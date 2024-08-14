@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,14 +35,22 @@ public class StaminaManager : GameManager
 
         if(currentStamina<staminaCostPerClick)
             {
+                
                 setCanPush(false);
+                ProgressBar.color = Color.red;
+                
             }
         else
             {
                 setCanPush(true);
+                TurnNormalColor();
             }   
     }
 
+    void TurnNormalColor()
+    {
+        ProgressBar.color=new Color(0.4185208f,0.43353f,0.9339623f);
+    }
     public void StaminaCost()
     {
         currentStamina-=staminaCostPerClick;

@@ -13,7 +13,8 @@ public class SweatManager : GameManager
 
     // Update is called once per frame
     private void Awake() {
-        sweatPanelText.text=characterStats.currentSweat.ToString();
+        int value = (int)characterStats.currentSweat;
+        sweatPanelText.text=value.ToString();
     }
     
 

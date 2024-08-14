@@ -57,7 +57,7 @@ public class ButtonManager : MonoBehaviour
                               +gameManager.characterStats.power.ToString() + " -> " + (gameManager.characterStats.power+10).ToString();
 
       characterStaminaText.text="Stamina"+" Lv." +gameManager.characterStats.staminaLevel.ToString()+":\n"
-                                 +gameManager.characterStats.stamina.ToString() + " -> " + (gameManager.characterStats.stamina+20).ToString();
+                                 +gameManager.characterStats.stamina.ToString() + " -> " + (gameManager.characterStats.stamina+40).ToString();
 
       characterStaminaRegenText.text="Stamina Regen"+" Lv." +gameManager.characterStats.staminaRegenLevel.ToString()+":\n"
                                     +gameManager.characterStats.staminaRegen.ToString() + " -> " + (gameManager.characterStats.staminaRegen+10).ToString();
@@ -90,7 +90,7 @@ public class ButtonManager : MonoBehaviour
             
             break;
          case "Stamina":
-            gameManager.characterStats.stamina+=gameManager.statGainPerUpgrade*2;
+            gameManager.characterStats.stamina+=gameManager.statGainPerUpgrade*4;
             gameManager.characterStats.currentSweat-=gameManager.characterStats.staminaLevel*100;
             sweatPanelText.text=gameManager.characterStats.currentSweat.ToString();
             gameManager.characterStats.staminaLevel++;
@@ -185,18 +185,19 @@ public class ButtonManager : MonoBehaviour
    public void Retry()
    {
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-      
+      gameManager.Save();
    }
 
    public void Return()
    {
       SceneManager.LoadScene(0);
-      
+      gameManager.Save();
    }
 
    public void OpenChallengeScene()
    {
       SceneManager.LoadScene(1);
-
+      gameManager.Save();
    }
+   
 }

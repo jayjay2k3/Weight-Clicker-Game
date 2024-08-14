@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,6 +26,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField] SweatManager sweatManager;
     [SerializeField] CompettionManager compettionManager;
     public bool isCompettionScene;
+
+    public TextMeshProUGUI expGainText;
+    public TextMeshProUGUI sweatGainText;
+    public GameObject canvas;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +69,7 @@ public class CharacterController : MonoBehaviour
             {
                 animator.SetBool("IsTouch",true);
             }
-
+           
             
         }
 
@@ -77,11 +83,29 @@ public class CharacterController : MonoBehaviour
         if (isCompettionScene)
         {
             compettionManager.pushCount++;
+            compettionManager.UpdateCounter();
         }
         if (!isCompettionScene)
-        {
+        {   
             levelManager.GainExp();
             sweatManager.GainSweat();
+
+            expGainText.text=gameManager.characterStats.expPerClick.ToString();
+            sweatGainText.text = (gameManager.characterStats.sweatGainPerClick * (1+gameManager.characterStats.sweatGainRate/100)).ToString();
+
+            TextMeshProUGUI expText = Instantiate(expGainText,transform.position,Quaternion.identity) ;
+            TextMeshProUGUI sweatText = Instantiate(sweatGainText,transform.position,Quaternion.identity);
+            
+            expText.rectTransform.SetParent(canvas.transform);
+            expText.rectTransform.localScale = new Vector3(1,1,1);
+            expText.rectTransform.localPosition = new Vector2(-25,-19);
+
+            sweatText.rectTransform.SetParent(canvas.transform);
+            sweatText.rectTransform.localScale = new Vector3(1,1,1);
+            sweatText.rectTransform.localPosition  = new Vector2(-25,-70);
+
+            
+            
         }
 
 

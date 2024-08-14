@@ -3451,8 +3451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35.499878}
-  m_SizeDelta: {x: 90.5477, y: 30}
+  m_AnchoredPosition: {x: 0, y: -43.1671}
+  m_SizeDelta: {x: 90.5477, y: 45.3345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1016456528
 MonoBehaviour:
@@ -3502,7 +3502,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Challenge
+  m_Text: x10 Challenge
 --- !u!222 &1016456530
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5757,7 +5757,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: -10
   m_TargetDisplay: 0
@@ -7446,6 +7446,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9090311829592880082, guid: ff198de0687315f448ac6c489cec586a, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 832122371}
+    - target: {fileID: 9090311829592880082, guid: ff198de0687315f448ac6c489cec586a, type: 3}
+      propertyPath: expGainText
+      value: 
+      objectReference: {fileID: 7047888500687751078, guid: 7776266641680f1489e7c3eb20ebdbe1, type: 3}
+    - target: {fileID: 9090311829592880082, guid: ff198de0687315f448ac6c489cec586a, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 2018176101}
@@ -7457,6 +7465,10 @@ PrefabInstance:
       propertyPath: sweatManager
       value: 
       objectReference: {fileID: 2018176104}
+    - target: {fileID: 9090311829592880082, guid: ff198de0687315f448ac6c489cec586a, type: 3}
+      propertyPath: sweatGainText
+      value: 
+      objectReference: {fileID: 2646468304271532756, guid: d44a2995c2044db4d9ce4007e1791039, type: 3}
     - target: {fileID: 9090311829592880082, guid: ff198de0687315f448ac6c489cec586a, type: 3}
       propertyPath: staminaManager
       value: 

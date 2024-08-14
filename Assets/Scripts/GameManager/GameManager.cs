@@ -21,16 +21,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI[] weightText;
     public Sprite[] barbellImage;
     public SpriteRenderer characterCurrentBarbellImage;
+
     private void Awake()
     {
         Time.timeScale = 1f;
-        Save();
         if (PlayerPrefs.GetInt("IsSave") == 1)
         {
-            Debug.Log(1);
             LoadData();
         }
     }
+
     
     void LoadData()
     {
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
         characterStats.selectedBarbellIndex = PlayerPrefs.GetInt("selectedBarbellIndex");
         characterCurrentBarbellImage.sprite = barbellImage[characterStats.selectedBarbellIndex];
+        Debug.Log(characterStats.selectedBarbellIndex);
 
     }
 
@@ -123,6 +124,8 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetInt("selectedBarbellIndex", characterStats.selectedBarbellIndex);
         PlayerPrefs.Save();
+
+        
     }
 
 
